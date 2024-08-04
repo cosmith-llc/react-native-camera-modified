@@ -33,6 +33,7 @@ import androidx.core.os.ParcelableCompat;
 import androidx.core.os.ParcelableCompatCreatorCallbacks;
 import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -126,13 +127,16 @@ public class CameraView extends FrameLayout {
         // Internal setup
         final PreviewImpl preview = createPreviewImpl(context);
         mCallbacks = new CallbackBridge();
+        Log.e(TAG, "Step-0");
         // if (fallbackToOldApi || Build.VERSION.SDK_INT < 21 || Camera2.isLegacy(context)) {
         // if (Build.VERSION.SDK_INT < 21) {
         //     mImpl = new Camera1(mCallbacks, preview, mBgHandler);
         // } else 
         if (Build.VERSION.SDK_INT < 23) {
+            Log.e(TAG, "Step-0-1");
             mImpl = new Camera2(mCallbacks, preview, context, mBgHandler);
         } else {
+            Log.e(TAG, "Step-0-2");
             mImpl = new Camera2Api23(mCallbacks, preview, context, mBgHandler);
         }
 
@@ -300,7 +304,9 @@ public class CameraView extends FrameLayout {
             if (wasOpened) {
                 stop();
             }
+            Log.e(TAG, "Step0");
             if (Build.VERSION.SDK_INT < 23) {
+                Log.e(TAG, "Step1");
                 mImpl = new Camera2(mCallbacks, mImpl.mPreview, mContext, mBgHandler);
             } else {
                 mImpl = new Camera2Api23(mCallbacks, mImpl.mPreview, mContext, mBgHandler);
@@ -315,6 +321,7 @@ public class CameraView extends FrameLayout {
             if (wasOpened) {
                 stop();
             }
+            Log.e(TAG, "Step2");
             mImpl = new Camera1(mCallbacks, mImpl.mPreview, mBgHandler);
         }
         if(wasOpened){
