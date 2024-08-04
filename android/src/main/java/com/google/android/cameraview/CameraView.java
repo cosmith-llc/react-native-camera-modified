@@ -51,6 +51,7 @@ import java.util.SortedSet;
 
 public class CameraView extends FrameLayout {
 
+    private static final String TAG = "CameraView::EVENT";
     /** The camera device faces the opposite direction as the device's screen. */
     public static final int FACING_BACK = Constants.FACING_BACK;
 
