@@ -127,9 +127,10 @@ public class CameraView extends FrameLayout {
         final PreviewImpl preview = createPreviewImpl(context);
         mCallbacks = new CallbackBridge();
         // if (fallbackToOldApi || Build.VERSION.SDK_INT < 21 || Camera2.isLegacy(context)) {
-        if (Build.VERSION.SDK_INT < 21) {
-            mImpl = new Camera1(mCallbacks, preview, mBgHandler);
-        } else if (Build.VERSION.SDK_INT < 23) {
+        // if (Build.VERSION.SDK_INT < 21) {
+        //     mImpl = new Camera1(mCallbacks, preview, mBgHandler);
+        // } else 
+        if (Build.VERSION.SDK_INT < 23) {
             mImpl = new Camera2(mCallbacks, preview, context, mBgHandler);
         } else {
             mImpl = new Camera2Api23(mCallbacks, preview, context, mBgHandler);
