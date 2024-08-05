@@ -151,7 +151,7 @@ public class CameraView extends FrameLayout {
         }
     
         Log.e(TAG, "Build.VERSION.SDK_IN:" + Build.VERSION.SDK_INT);
-        if (fallbackToOldApi || Build.VERSION.SDK_INT < 21) {
+        if (fallbackToOldApi || Build.VERSION.SDK_INT < 21 || Camera2.isLegacy(context)) {
             mImpl = new Camera1(mCallbacks, preview, mBgHandler);
         } else if (Build.VERSION.SDK_INT < 23) {
             Log.e(TAG, "Step-0-1");
