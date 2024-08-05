@@ -133,7 +133,7 @@ public class CameraView extends FrameLayout {
         // if (Build.VERSION.SDK_INT < 21) {
         //     mImpl = new Camera1(mCallbacks, preview, mBgHandler);
         // } else 
-
+/* 
         if (fallbackToOldApi) {
             Log.i(TAG, "Fallback");
         }
@@ -149,7 +149,7 @@ public class CameraView extends FrameLayout {
         if (Camera2.isLegacy(context)) {
             Log.e(TAG, "Legacy");
         }
-    
+    */
         Log.e(TAG, "Build.VERSION.SDK_IN:" + Build.VERSION.SDK_INT);
         if (fallbackToOldApi || Build.VERSION.SDK_INT < 21 || Camera2.isLegacy(context)) {
             mImpl = new Camera1(mCallbacks, preview, mBgHandler);
